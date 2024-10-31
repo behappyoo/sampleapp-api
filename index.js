@@ -15,7 +15,7 @@ app.use(cors());
 const s3Client = new S3Client({
 	    region: 'ap-northeast-2',
 	    credentials: {
-		            accessKeyId: process.env.AWS_ACCESS_KEY_ID, // 환경 변수에서 자격 증명 읽기
+		            accessKeyId: process.env.AWS_ACCESS_KEY_ID, 
 		            secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
 		        }
 });
@@ -40,7 +40,7 @@ const pool = mysql.createPool({
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
-    connectionLimit: DB_POOL_MAX // 최대 10개의 연결 유지
+    connectionLimit: process.env.DB_POOL_MAX // 최대 10개의 연결 유지
 });
 
 
