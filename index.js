@@ -7,6 +7,8 @@ const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
 
 const path = require('path');
 const mysql = require('mysql2/promise');
+const dotenv = require('dotenv');
+dotenv.config();
 
 const app = express();
 app.use(cors());
