@@ -26,7 +26,7 @@ const s3Client = new S3Client({
 const upload = multer({
     storage: multerS3({
         s3: s3Client,
-        bucket: 'sample-app-bucket1',
+        bucket: 'board-image-bucket',
         metadata: (req, file, cb) => {
             cb(null, { fieldName: file.fieldname });
         },
@@ -49,7 +49,6 @@ const pool = mysql.createPool({
 // 파일과 텍스트 데이터 받기
 app.post('/api/upload', upload.single('image'), async (req, res) => {
     try {
-	console.log('요청들어옴');
         // 이미지 업로드가 완료되면 req.file에 파일 정보가 담깁니다.
         const text = req.body.text; // 텍스트 데이터
         const fileUrl = req.file.location; // S3에서의 파일 URL
